@@ -1,0 +1,27 @@
+# permissions for end users to view namespaceselectors.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: namespaceselector-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: admission-controller-namespacevalidator
+    app.kubernetes.io/part-of: admission-controller-namespacevalidator
+    app.kubernetes.io/managed-by: kustomize
+  name: namespaceselector-viewer-role
+rules:
+- apiGroups:
+  - admission.geoffrey.io
+  resources:
+  - namespaceselectors
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - admission.geoffrey.io
+  resources:
+  - namespaceselectors/status
+  verbs:
+  - get

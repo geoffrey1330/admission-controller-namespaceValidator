@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- admission_v1_namespaceselector.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples

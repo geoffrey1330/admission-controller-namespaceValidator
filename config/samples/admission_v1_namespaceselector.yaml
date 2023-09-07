@@ -1,0 +1,12 @@
+apiVersion: admission.geoffrey.io/v1
+kind: NamespaceSelector
+metadata:
+  labels:
+    app.kubernetes.io/name: namespaceselector
+    app.kubernetes.io/instance: namespaceselector-sample
+    app.kubernetes.io/part-of: admission-controller-namespacevalidator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: admission-controller-namespacevalidator
+  name: namespaceselector-sample
+spec:
+  # TODO(user): Add fields here
