@@ -29,7 +29,7 @@ import (
 
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
 
-	v1 "namespaceselector.geoffrey.io/namespaceselector/api/v1"
+	admissionv1 "namespaceselector.geoffrey.io/namespaceselector/api/v1"
 )
 
 // NamespaceSelectorReconciler reconciles a NamespaceSelector object
@@ -62,7 +62,7 @@ func (r *NamespaceSelectorReconciler) Reconcile(ctx context.Context, req ctrl.Re
 // SetupWithManager sets up the controller with the Manager.
 func (r *NamespaceSelectorReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&v1.NamespaceSelector{}).
+		For(&admissionv1.NamespaceSelector{}).
 		Complete(r)
 }
 
@@ -74,7 +74,7 @@ type NamespaceSelectorValidator struct {
 // Handle validates the resource admission request
 func (v *NamespaceSelectorValidator) Handle(ctx context.Context, req admission.Request) admission.Response {
 	// Fetch the NamespaceSelector object
-	namespaceSelector := &v1.NamespaceSelector{}
+	namespaceSelector := &admissionv1.NamespaceSelector{}
 	if err := v.decoder.Decode(req, namespaceSelector); err != nil {
 		return admission.Errored(http.StatusBadRequest, err)
 	}
@@ -100,7 +100,7 @@ func (v *NamespaceSelectorValidator) Handle(ctx context.Context, req admission.R
 	return admission.Allowed("Resource validated successfully")
 }
 
-// +kubebuilder:webhook:path=/validate-admission-example-com-v1-namespaceselector,mutating=false,failurePolicy=fail,groups=admission.example.com,resources=namespaceselectors,verbs=create;update,versions=v1,name=vnamespaceselector.kb.io
+// +kubebuilder:webhook:path=/validate-admission-example-com-v1-namespaceselector,mutating=false,failurePolicy=fail,groups=admission.example.com,resources=namespaceselectors,verbs=create;update,versions=v1,name=vnamespaceselector.kb.io,admissionReviewVersions=v1
 
 // NamespaceSelectorValidator implements admission.DecoderInjector.
 // A decoder will be automatically injected.

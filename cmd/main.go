@@ -31,8 +31,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	admissionv1 "namespaceselector.kubebuilder.io/namespaceselector/api/v1"
-	"namespaceselector.kubebuilder.io/namespaceselector/internal/controller"
+	admissionv1 "namespaceselector.geoffrey.io/namespaceselector/api/v1"
+	"namespaceselector.geoffrey.io/namespaceselector/internal/controller"
 	//+kubebuilder:scaffold:imports
 )
 
