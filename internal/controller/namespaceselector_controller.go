@@ -86,7 +86,6 @@ func (v *NamespaceSelectorValidator) Handle(ctx context.Context, req admission.R
 	}
 
 	// Check if the resource's namespace matches the NamespaceSelector's namespace
-
 	if namespaceSelector.Spec.Namespace != resource.GetNamespace() {
 		return admission.Allowed(fmt.Sprintf("Resource is not in namespace %s", namespaceSelector.Spec.Namespace))
 	}
