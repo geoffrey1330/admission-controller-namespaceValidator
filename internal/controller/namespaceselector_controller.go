@@ -80,6 +80,7 @@ func (v *NamespaceSelectorValidator) Handle(ctx context.Context, req admission.R
 	}
 
 	// Fetch the resource being admitted
+
 	resource := &unstructured.Unstructured{}
 	if err := v.decoder.DecodeRaw(req.AdmissionRequest.Object, resource); err != nil {
 		return admission.Errored(http.StatusBadRequest, err)
